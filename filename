@@ -1,0 +1,36 @@
+
+#!/usr/bin/env python
+from __future__ import print_function       #should be on the top
+import threading
+import time
+
+
+class MyThread(threading.Thread):
+    def run(self):
+        print("{} started!".format(self.getName()))              # "Thread-x started!"
+        time.sleep(1)                                      # Pretend to work for a second
+        print("{} finished!".format(self.getName()))             # "Thread-x finished!"
+
+if __name__ == '__main__':
+    for x in range(4):                                     # Four times...
+        mythread = MyThread(name = "Thread-{}".format(x + 1))  # ...Instantiate a thread and pass a unique ID to it
+        mythread.start()                                   # ...Start the thread
+        time.sleep(.9)
+
+s = list("abcdbe")
+print s
+t = list("adb")
+
+count = 0
+
+for i in range(len(t)):
+    for j in range(len(s)):
+        if (t[i] == s[j]):
+            print count,t.index(t[i]),s.index(s[j]),t[i],s[j]
+            if (t.index(t[i]) <= s.index(s[j])):
+                count+=1
+
+if (count >= len(t)):
+    print "right string"
+else:
+    print "wrong input"

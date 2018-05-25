@@ -1,0 +1,26 @@
+import sys
+
+x = list(sys.argv[1])
+y = list(sys.argv[2])
+
+x1 = len(x)
+y1 = len(y)
+
+matcher =[]
+
+if (x1 == y1):
+    for i in range(len(x)):
+        if (x[i] == y[i]):
+            matcher.append(x[i])
+    if (len(matcher) == (x1 - 1)):
+        print "only one update"
+else:
+    if (x1 - y1 == 1):
+        if (all(i in x for i in y)):
+            print "only one delete"
+        else:
+            print "wrong input"
+
+
+#Question 2: Compression of the string i.e if string = aabbcc, if it returns a2b2c2 and length is same
+# dont return this but if string is aabbccc , it gives a2b2c3 , return a2b2c3
